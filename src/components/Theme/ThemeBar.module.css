@@ -13,6 +13,7 @@
   border-radius: 5px;
   padding: 0.5rem;
   transform: translateY(-25%);
+  background-color: white;
 }
 .colors > * {
   /* border: 3px solid red; */

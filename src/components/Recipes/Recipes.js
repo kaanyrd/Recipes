@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Recipe from "../Recipe/Recipe";
 
 function Recipes() {
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
   const [recipes, setRecipes] = useState([]);
-  const [searchValidity, setSearchValidity] = useState(false);
   const [loading, setLoading] = useState(false);
   const [recipe, setRecipe] = useState("");
-  const [inputValidity, setInputValidity] = useState(false);
 
   const onInputChangeHandler = (e) => {
     setRecipe(e.target.value);
@@ -15,70 +14,73 @@ function Recipes() {
   const searchRecipe = async (e) => {
     e.preventDefault();
     if (recipe.trim().length === 0) {
-      setInputValidity(true);
-    } else {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          `https://forkify-api.herokuapp.com/api/v2/recipes?search=${recipe.trim()}&key=${key}`
-        );
-        if (!response.status) {
-          console.error("An error has occured !");
-        }
-        const data = await response.json();
-        if (data.results === 0) {
-          setSearchValidity(true);
-        }
-        setLoading(true);
-        setRecipes(data.data.recipes);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-        setRecipe("");
-        setInputValidity(false);
-      }
-    }
-  };
-
-  const onBlurHandler = () => {
-    if (!recipes.length > 0) {
-      setInputValidity(true);
-    }
-  };
-
-  useEffect(() => {
-    if (recipe.trim().length > 0) {
-      setInputValidity(false);
       return;
     }
-  }, [recipe]);
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes?search=${recipe.trim()}&key=${key}`
+      );
+      if (!response.status) {
+        console.error("An error has occured !");
+      }
+      const data = await response.json();
+      setLoading(true);
+      setRecipes(data.data.recipes);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+      setRecipe("");
+    }
+  };
+
+  const [recipeSelf, setRecipeSelf] = useState([]);
+
+  const handleId = async (recipeId) => {
+    // console.log(recipeId);
+    try {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
+      );
+      const data = await response.json();
+      // console.log(data.data.recipe);
+      setRecipeSelf(data.data.recipe);
+    } catch (error) {
+      throw new Error("Could not reach [...Food Name...] Recipe !");
+    } finally {
+    }
+  };
 
   return (
     <div>
       <form onSubmit={searchRecipe}>
         <label>Your Food</label>
-        <p>{inputValidity && "Input can not be empty!"}</p>
-        <input
-          type="text"
-          onBlur={onBlurHandler}
-          onChange={onInputChangeHandler}
-          value={recipe}
-        />
+        <input type="text" onChange={onInputChangeHandler} value={recipe} />
         <button type="submit">Search!</button>
       </form>
 
-      {recipes?.length === 0 && !searchValidity && !loading && (
-        <h1>Search your food</h1>
-      )}
-      {recipes?.length === 0 && searchValidity && !loading && (
-        <h1>Couldn't find your food</h1>
-      )}
-      {recipes?.length > 0 &&
-        !searchValidity &&
-        !loading &&
-        recipes?.map((data) => <li key={data.id}>{data.title}</li>)}
+      {recipes?.length === 0 && !loading && <h1>Search your food</h1>}
+      <ul>
+        {recipes?.length > 0 &&
+          !loading &&
+          recipes?.map((data) => (
+            <div onClick={() => handleId(data.id)}>
+              <li key={data.id}>{data.title}</li>
+              <img src={data.image_url} alt={data.title} />
+              <li>{data.publisher}</li>
+            </div>
+          ))}
+      </ul>
       {loading && <h1>Loading...</h1>}
+      {/* ONE RECIPE */}
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <hr />
+      <Recipe recipe={recipeSelf} />
     </div>
   );
 }
