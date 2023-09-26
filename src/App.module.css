@@ -1,0 +1,18 @@
+.content {
+  border: 3px solid black;
+  min-height: 100vh;
+}
+.mainContent {
+  border: 3px solid red;
+  max-width: 1170px;
+  width: 90vw;
+  margin: 2rem auto;
+}
+.themeBar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateX(-10%);
+  z-index: 2;
+  cursor: pointer;
+}

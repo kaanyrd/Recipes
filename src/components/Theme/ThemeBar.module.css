@@ -1,0 +1,47 @@
+.paletteIcon {
+  cursor: pointer;
+  border: 3px solid red;
+  font-size: 2rem;
+  color: black;
+  background-color: blue;
+  border-radius: 50%;
+}
+.colors {
+  border: 3px solid black;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  padding: 0.5rem;
+  transform: translateY(-25%);
+}
+.colors > * {
+  /* border: 3px solid red; */
+}
+.colorButtons {
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+}
+.colorButtons > * {
+  /* border: 1px solid black; */
+}
+
+.black {
+  background-color: black;
+  width: 20px;
+  height: 20px;
+}
+.red {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+}
+.green {
+  background-color: green;
+  width: 20px;
+  height: 20px;
+}
+.yellow {
+  background-color: yellow;
+  width: 20px;
+  height: 20px;
+}
