@@ -2,8 +2,8 @@ import React from "react";
 import classes from "./App.module.css";
 import Recipes from "./components/Recipes/Recipes";
 import ThemeBar from "./components/Theme/ThemeBar";
-import Bookmarks from "./components/Bookmarks/Bookmarks";
-import AddRecipe from "./components/AddRecipe/AddRecipe";
+// import Bookmarks from "./components/Bookmarks/Bookmarks";
+// import AddRecipe from "./components/AddRecipe/AddRecipe";
 import Recipe from "./components/Recipe/Recipe";
 
 function App() {
