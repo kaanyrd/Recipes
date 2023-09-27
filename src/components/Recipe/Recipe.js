@@ -1,38 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 function Recipe(props) {
-  const [index, setIndex] = useState(0);
-  const [maxIndex, setMaxIndex] = useState(null);
+  const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
+    setIngredients([]);
     for (let i = 0; i < props.recipe.ingredients?.length; i++) {
-      // console.log(props.recipe.ingredients[i]);
-      // console.log(i);
-      setMaxIndex(props.recipe.ingredients.length);
+      setIngredients((prev) => [...prev, props.recipe.ingredients[i]]);
     }
   }, [props]);
 
-  console.log(maxIndex);
-
-  const decrementIndex = () => {
-    if (index === 0) {
-      return;
-    } else {
-      setIndex(index - 1);
-    }
-  };
-
-  const incrementIndex = () => {
-    setIndex(index + 1);
-  };
-  console.log(index);
-
   return (
     <div>
-      <hr />
-      <ul>
-        <h1>
-          {props.recipe.title?.length !== 0 && (
+      {props.loading && <h1>Loading...</h1>}
+      {!props.loading && (
+        <div>
+          {props.recipe.length === 0 ? null : (
             <div>
               <div>Title: {props.recipe.title}</div>
               <div>Cooking Time: {props.recipe.cooking_time} mins</div>
@@ -44,28 +27,17 @@ function Recipe(props) {
               <div>
                 <h1>Ingredients</h1>
                 <ul>
-                  <li>
-                    Description:{props.recipe.ingredients?.[index]?.description}
-                  </li>
-                  <li>
-                    Quantity: {props.recipe.ingredients?.[index].quantity}
-                  </li>
-                  <li>Unit: {props.recipe.ingredients?.[index].unit}</li>
+                  {ingredients.map((data, index) => (
+                    <li key={index}>
+                      *** {data.quantity} / {data.unit} / {data.description}
+                    </li>
+                  ))}
                 </ul>
-                <button disabled={index === 0} onClick={decrementIndex}>
-                  Decrement
-                </button>
-                <button
-                  disabled={index === maxIndex - 1}
-                  onClick={incrementIndex}
-                >
-                  Increment
-                </button>
               </div>
             </div>
           )}
-        </h1>
-      </ul>
+        </div>
+      )}
     </div>
   );
 }

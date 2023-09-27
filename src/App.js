@@ -9,10 +9,8 @@ function App() {
   return (
     <div className={classes.content}>
       <div className={classes.mainContent}>
-        <h1>Search Your Dishes</h1>
-        <hr />
+        <h3 className={classes.title}>Search Your Dishes</h3>
         <Recipes />
-        <hr />
         <ThemeBar className={classes.themeBar} />
         {/* <hr />
         <Bookmarks />

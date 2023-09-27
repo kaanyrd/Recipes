@@ -1,8 +1,24 @@
 import React, { useState } from "react";
 import Recipe from "../Recipe/Recipe";
+import classes from "./Recipes.module.css";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
 
 function Recipes() {
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const getRecipesForCurrentPage = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return recipes.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [recipe, setRecipe] = useState("");
@@ -36,51 +52,72 @@ function Recipes() {
   };
 
   const [recipeSelf, setRecipeSelf] = useState([]);
+  const [recipeSelfLoading, setRecipeSelfLoading] = useState(false);
 
   const handleId = async (recipeId) => {
-    // console.log(recipeId);
+    setRecipeSelfLoading(true);
     try {
       const response = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
       );
       const data = await response.json();
-      // console.log(data.data.recipe);
       setRecipeSelf(data.data.recipe);
     } catch (error) {
       throw new Error("Could not reach [...Food Name...] Recipe !");
     } finally {
+      setRecipeSelfLoading(false);
     }
   };
 
-  return (
-    <div>
-      <form onSubmit={searchRecipe}>
-        <label>Your Food</label>
-        <input type="text" onChange={onInputChangeHandler} value={recipe} />
-        <button type="submit">Search!</button>
-      </form>
+  //   <p>
+  //   {recipes.length === 0 ? null : <div>Recipes: {recipes.length}</div>}
+  // </p>
 
-      {recipes?.length === 0 && !loading && <h1>Search your food</h1>}
-      <ul>
-        {recipes?.length > 0 &&
-          !loading &&
-          recipes?.map((data) => (
-            <div onClick={() => handleId(data.id)}>
-              <li key={data.id}>{data.title}</li>
-              <img src={data.image_url} alt={data.title} />
-              <li>{data.publisher}</li>
+  return (
+    <div className={classes.main}>
+      <div className={classes.formSide}>
+        <form className={classes.form} onSubmit={searchRecipe}>
+          <input type="text" onChange={onInputChangeHandler} value={recipe} />
+          <button type="submit">
+            <RestaurantIcon />
+          </button>
+        </form>
+      </div>
+      {loading ? <h3 className={classes.loadingText}>Loading...</h3> : null}
+      <div className={classes.list}>
+        <ul className={classes.listSelf}>
+          {getRecipesForCurrentPage().map((data) => (
+            <div
+              className={classes.card}
+              key={data.id}
+              onClick={() => handleId(data.id)}
+            >
+              <li className={classes.paragraph}>{data.title}</li>
+              <img
+                className={classes.img}
+                src={data.image_url}
+                alt={data.title}
+              />
+              <p className={classes.publisher}>{data.publisher}</p>
             </div>
           ))}
-      </ul>
-      {loading && <h1>Loading...</h1>}
-      {/* ONE RECIPE */}
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <Recipe recipe={recipeSelf} />
+        </ul>
+        <div className={classes.pagination}>
+          {Array.from(
+            { length: Math.ceil(recipes.length / itemsPerPage) },
+            (_, index) => (
+              <button
+                key={index}
+                onClick={() => handlePageChange(index + 1)}
+                className={index + 1 === currentPage ? classes.activePage : ""}
+              >
+                {index + 1}
+              </button>
+            )
+          )}
+        </div>
+      </div>
+      {/* <Recipe recipe={recipeSelf} loading={recipeSelfLoading} /> */}
     </div>
   );
 }

@@ -1,12 +1,18 @@
 .content {
-  border: 3px solid black;
   min-height: 100vh;
 }
 .mainContent {
-  border: 3px solid red;
-  max-width: 1170px;
-  width: 90vw;
-  margin: 2rem auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  padding: 0.5rem;
+}
+.mainContent > * {
+  /* border: 3px solid gray; */
+}
+.title {
+  text-align: center;
 }
 .themeBar {
   position: fixed;
