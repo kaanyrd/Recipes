@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Recipe from "../Recipe/Recipe";
+// import Recipe from "../Recipe/Recipe";
 import classes from "./Recipes.module.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 
@@ -50,24 +50,24 @@ function Recipes() {
       setRecipe("");
     }
   };
+  // FIXME
+  // const [recipeSelf, setRecipeSelf] = useState([]);
+  // const [recipeSelfLoading, setRecipeSelfLoading] = useState(false);
 
-  const [recipeSelf, setRecipeSelf] = useState([]);
-  const [recipeSelfLoading, setRecipeSelfLoading] = useState(false);
-
-  const handleId = async (recipeId) => {
-    setRecipeSelfLoading(true);
-    try {
-      const response = await fetch(
-        `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
-      );
-      const data = await response.json();
-      setRecipeSelf(data.data.recipe);
-    } catch (error) {
-      throw new Error("Could not reach [...Food Name...] Recipe !");
-    } finally {
-      setRecipeSelfLoading(false);
-    }
-  };
+  // const handleId = async (recipeId) => {
+  //   setRecipeSelfLoading(true);
+  //   try {
+  //     const response = await fetch(
+  //       `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
+  //     );
+  //     const data = await response.json();
+  //     setRecipeSelf(data.data.recipe);
+  //   } catch (error) {
+  //     throw new Error("Could not reach [...Food Name...] Recipe !");
+  //   } finally {
+  //     setRecipeSelfLoading(false);
+  //   }
+  // };
 
   //   <p>
   //   {recipes.length === 0 ? null : <div>Recipes: {recipes.length}</div>}
@@ -90,7 +90,8 @@ function Recipes() {
             <div
               className={classes.card}
               key={data.id}
-              onClick={() => handleId(data.id)}
+              // FIXME
+              // onClick={() => handleId(data.id)}
             >
               <li className={classes.paragraph}>{data.title}</li>
               <img
