@@ -82,9 +82,10 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
-  /* align-items: center; */
+  align-items: center;
   text-align: center;
   /* gap: 0.5rem; */
+  height: 250px;
 }
 .card > * {
   border: 3px solid green;
