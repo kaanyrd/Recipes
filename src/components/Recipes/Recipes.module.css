@@ -23,9 +23,9 @@
 .form > input {
   height: 32px;
   border: none;
-  border-left: 2px solid blue;
-  border-top: 2px solid blue;
-  border-bottom: 2px solid blue;
+  border-left: 2px solid #fa8449;
+  border-top: 2px solid #fa8449;
+  border-bottom: 2px solid #fa8449;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   padding-left: 0.5rem;
@@ -34,26 +34,26 @@
 }
 .form > input:focus {
   outline: none;
-  border-left: 2px solid blue;
-  border-top: 2px solid blue;
-  border-bottom: 2px solid blue;
+  border-left: 2px solid #fa8449;
+  border-top: 2px solid #fa8449;
+  border-bottom: 2px solid #fa8449;
 }
 .form > button {
   height: 32px;
   width: 3rem;
-  border-top: 2px solid blue;
-  border-bottom: 2px solid blue;
-  border-right: 2px solid blue;
+  border-top: 2px solid #fa8449;
+  border-bottom: 2px solid #fa8449;
+  border-right: 2px solid #fa8449;
   border-left: none;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   cursor: pointer;
-  color: rgb(0, 34, 255);
-  background: rgb(209, 209, 255);
+  color: #fe5500;
+  background: #ffbc9b;
   transition: all 0.2s ease-out;
 }
 .form > button:hover {
-  background: rgb(180, 180, 251);
+  background: #fca87f;
 }
 .form > * {
   border: 3px solid red;
@@ -84,8 +84,9 @@
   grid-template-rows: auto 1fr auto;
   align-items: center;
   text-align: center;
-  /* gap: 0.5rem; */
   height: 250px;
+  padding: 0.5rem;
+  cursor: pointer;
 }
 .card > * {
   border: 3px solid green;
@@ -93,7 +94,7 @@
 .img {
   object-fit: cover;
   height: 100%;
-  max-height: 200px;
+  max-height: 190px;
 }
 /* Paragraf stilini ayarla */
 .paragraph {
@@ -120,14 +121,21 @@
   width: 1.4rem;
   border-radius: 5px;
   border: none;
-  background: #dfe1e2;
+  background: #f8b299;
   padding: 0.2rem;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .activePage {
-  background: #a9aaaa;
+  background: #fa8449;
+  font-weight: bolder;
 }
 
 .loadingText {
   text-align: center;
+}
+
+.informationText {
+  text-align: center;
+  margin-top: 1.5rem;
 }

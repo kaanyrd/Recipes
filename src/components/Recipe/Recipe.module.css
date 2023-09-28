@@ -1,0 +1,144 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+.recipeSelfContent {
+  padding: 0;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: white;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90vw;
+  max-width: 450px;
+  overflow-y: auto;
+  height: fit-content;
+  padding: 0rem;
+  max-height: 80vh;
+}
+.img {
+  height: 150px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  object-fit: cover;
+}
+.imgSide {
+  position: relative;
+  padding: 0;
+  border-radius: 5px;
+}
+.more {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  backdrop-filter: blur(9px);
+  padding: 0.3rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 10px;
+}
+.more > a {
+  color: white;
+}
+.closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  /* background: rgb(255, 80, 80); */
+  background-color: rgb(255, 70, 70);
+  color: white;
+  font-weight: bold;
+  border-bottom-left-radius: 10px;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.2s ease-out;
+}
+.closeBtn:hover {
+  background: transparent;
+  background-color: red;
+}
+.starIcon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  backdrop-filter: blur(9px);
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-top-right-radius: 10px;
+  /* border-top-right-radius: 10px; */
+}
+.starIconActive {
+  color: rgb(249, 225, 10);
+}
+.cookingInfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* border: 2px solid black; */
+  display: flex;
+  align-items: center;
+  color: white;
+  backdrop-filter: blur(90px);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.2rem;
+  border-bottom-right-radius: 10px;
+}
+.cookingInfo > p {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+.aboutDish {
+  /* border: 3px solid black; */
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.aboutDish > * {
+  /* border: 1px solid red; */
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+.cardBottom {
+  padding: 0.5rem;
+}
+.ingredientsTitle {
+  text-align: center;
+  margin: 1rem 0rem 0 0;
+}
+.list {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3rem;
+  padding: 0.3rem;
+}
+.list > li {
+  /* border: 1px solid red; */
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}
+.doneIcon,
+.noIcon {
+  cursor: pointer;
+}
+.doneIcon {
+  background-color: rgb(74, 126, 74);
+  color: white;
+}
+.noIcon {
+  background-color: red;
+  color: white;
+}

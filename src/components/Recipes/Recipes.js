@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-// import Recipe from "../Recipe/Recipe";
+import ReactDOM from "react-dom";
+import Recipe from "../Recipe/Recipe";
 import classes from "./Recipes.module.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 
-function Recipes() {
+function Recipes(props) {
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,6 +34,7 @@ function Recipes() {
       return;
     }
     try {
+      setCurrentPage(1);
       setLoading(true);
       const response = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${recipe.trim()}&key=${key}`
@@ -50,28 +52,25 @@ function Recipes() {
       setRecipe("");
     }
   };
-  // FIXME
-  // const [recipeSelf, setRecipeSelf] = useState([]);
-  // const [recipeSelfLoading, setRecipeSelfLoading] = useState(false);
+  const [recipeSelf, setRecipeSelf] = useState([]);
 
-  // const handleId = async (recipeId) => {
-  //   setRecipeSelfLoading(true);
-  //   try {
-  //     const response = await fetch(
-  //       `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
-  //     );
-  //     const data = await response.json();
-  //     setRecipeSelf(data.data.recipe);
-  //   } catch (error) {
-  //     throw new Error("Could not reach [...Food Name...] Recipe !");
-  //   } finally {
-  //     setRecipeSelfLoading(false);
-  //   }
-  // };
+  const handleId = async (recipeId) => {
+    try {
+      const response = await fetch(
+        `https://forkify-api.herokuapp.com/api/v2/recipes/${recipeId}`
+      );
+      const data = await response.json();
+      setRecipeSelf(data.data.recipe);
+    } catch (error) {
+      throw new Error("Could not reach [...Food Name...] Recipe !");
+    } finally {
+    }
+  };
 
-  //   <p>
-  //   {recipes.length === 0 ? null : <div>Recipes: {recipes.length}</div>}
-  // </p>
+  // <p>{recipes.length === 0 ? null : <div>Recipes: {recipes.length}</div>}</p>;
+  let RecipeContent = () => {
+    return <Recipe recipe={recipeSelf} setRecipeSelf={setRecipeSelf} />;
+  };
 
   return (
     <div className={classes.main}>
@@ -84,16 +83,20 @@ function Recipes() {
         </form>
       </div>
       {loading ? <h3 className={classes.loadingText}>Loading...</h3> : null}
+      {!loading && recipes.length === 0 && (
+        <h3 className={classes.informationText}>Over 1.000.000 recipes...</h3>
+      )}
       <div className={classes.list}>
         <ul className={classes.listSelf}>
           {getRecipesForCurrentPage().map((data) => (
             <div
               className={classes.card}
               key={data.id}
-              // FIXME
-              // onClick={() => handleId(data.id)}
+              onClick={() => handleId(data.id)}
             >
-              <li className={classes.paragraph}>{data.title}</li>
+              <li className={classes.paragraph}>
+                <strong>{data.title}</strong>
+              </li>
               <img
                 className={classes.img}
                 src={data.image_url}
@@ -103,6 +106,7 @@ function Recipes() {
             </div>
           ))}
         </ul>
+
         <div className={classes.pagination}>
           {Array.from(
             { length: Math.ceil(recipes.length / itemsPerPage) },
@@ -118,7 +122,11 @@ function Recipes() {
           )}
         </div>
       </div>
-      {/* <Recipe recipe={recipeSelf} loading={recipeSelfLoading} /> */}
+      {recipeSelf.length !== 0 &&
+        ReactDOM.createPortal(
+          <RecipeContent />,
+          document.getElementById("recipe")
+        )}
     </div>
   );
 }
