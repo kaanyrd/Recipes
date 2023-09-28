@@ -8,33 +8,28 @@
   backdrop-filter: blur(10px);
 }
 .recipeSelfContent {
-  padding: 0;
-  border-radius: 10px;
+  border-radius: 15px;
   position: fixed;
   top: 50%;
   left: 50%;
-  background: white;
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 90vw;
   max-width: 450px;
-  overflow-y: auto;
   height: fit-content;
-  padding: 0rem;
   max-height: 80vh;
-  border: 5px solid #f1f5f8;
-  border-right: none;
 }
 .img {
   height: 150px;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
   object-fit: cover;
 }
 .imgSide {
   position: relative;
   padding: 0;
-  border-radius: 5px;
+  border-radius: 15px;
+  background: white;
 }
 .more {
   position: absolute;
@@ -58,6 +53,7 @@
   color: white;
   font-weight: bold;
   border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
   border: none;
   width: 2rem;
   height: 2rem;
@@ -95,6 +91,7 @@
   background: rgba(0, 0, 0, 0.5);
   padding: 0.2rem;
   border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .cookingInfo > p {
   /* border: 2px solid red; */
@@ -113,20 +110,28 @@
   text-transform: capitalize;
 }
 .cardBottom {
+  /* padding: 1rem; */
   padding: 0.5rem;
-  background: #f1f5f8;
+  background: white;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 .ingredientsTitle {
   text-align: center;
-  margin: 1rem 0rem 0 0;
+  margin: 1rem 0rem 0.2rem 0;
 }
 .list {
   /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   row-gap: 0.3rem;
-  padding: 0.3rem;
+  padding: 0.5rem;
+  overflow-y: auto;
+  height: 200px;
+  border-radius: 5px;
+  background-color: #dcdcdc;
 }
+
 .list > li {
   /* border: 1px solid red; */
   text-transform: capitalize;

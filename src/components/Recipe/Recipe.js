@@ -70,7 +70,7 @@ function Recipe(props) {
                 <strong>{props.recipe.title}</strong>
                 <p>({props.recipe.publisher})</p>
               </div>
-              <div>
+              <div className={classes.overflow}>
                 <h3 className={classes.ingredientsTitle}>Ingredients</h3>
                 <ul className={classes.list}>
                   {ingredients.map((data, index) => (
