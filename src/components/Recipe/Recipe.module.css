@@ -5,10 +5,11 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
 }
 .recipeSelfContent {
   padding: 0;
-  border-radius: 5px;
+  border-radius: 10px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,6 +22,8 @@
   height: fit-content;
   padding: 0rem;
   max-height: 80vh;
+  border: 5px solid #f1f5f8;
+  border-right: none;
 }
 .img {
   height: 150px;
@@ -111,6 +114,7 @@
 }
 .cardBottom {
   padding: 0.5rem;
+  background: #f1f5f8;
 }
 .ingredientsTitle {
   text-align: center;
