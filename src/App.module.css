@@ -1,5 +1,7 @@
 .content {
   min-height: 100vh;
+  padding-top: 0.7rem;
+  background: rgb(255, 255, 255);
 }
 .mainContent {
   height: 100%;
@@ -7,7 +9,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   padding: 0.5rem;
-  width: 90vw;
+  width: 95vw;
   max-width: 1370px;
   margin: 0 auto;
 }
@@ -16,6 +18,8 @@
 }
 .title {
   text-align: center;
+  margin-bottom: 0.3rem;
+  color: tomato;
 }
 .themeBar {
   position: fixed;
@@ -24,4 +28,10 @@
   transform: translateX(-10%);
   z-index: 2;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .mainContent {
+    padding: 0.5rem 0 0 0;
+  }
 }

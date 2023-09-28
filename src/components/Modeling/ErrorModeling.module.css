@@ -6,6 +6,7 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
+  z-index: 5;
 }
 
 .errorContent {
@@ -20,6 +21,7 @@
   border-radius: 10px;
   width: 70vw;
   max-width: 350px;
+  z-index: 6;
 }
 .errorContent > * {
   /* border: 2px solid red; */
@@ -38,4 +40,9 @@
   color: white;
   border: none;
   cursor: pointer;
+}
+@media screen and (min-width: 678px) {
+  .errorContent {
+    max-width: 500px;
+  }
 }
