@@ -7,6 +7,9 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
   padding: 0.5rem;
+  width: 90vw;
+  max-width: 1370px;
+  margin: 0 auto;
 }
 .mainContent > * {
   /* border: 3px solid gray; */

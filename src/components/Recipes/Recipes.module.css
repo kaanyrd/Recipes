@@ -1,16 +1,13 @@
 .main {
-  /* border: 3px solid black; */
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  border: 3px solid black;
 }
 .main > * {
-  /* border: 3px solid red; */
+  border: 3px solid red;
   padding: 0.5rem;
 }
 .formSide {
-  border: 3px solid black;
+  /* border: 3px solid black; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,13 +57,13 @@
 }
 .list {
   height: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
 }
 .list > * {
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 .list > ul {
   display: grid;
@@ -75,10 +72,10 @@
   gap: 0.5rem;
 }
 .listSelf {
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 .card {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
@@ -87,9 +84,11 @@
   height: 250px;
   padding: 0.5rem;
   cursor: pointer;
+  background: rgb(255, 215, 208);
+  border-radius: 5px;
 }
 .card > * {
-  border: 3px solid green;
+  /* border: 3px solid green; */
 }
 .img {
   object-fit: cover;
@@ -138,4 +137,60 @@
 .informationText {
   text-align: center;
   margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 576px) {
+  .contentLayout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    border: 3px solid black;
+  }
+  .contentLayout > * {
+    border: 2px solid red;
+  }
+  .list {
+    max-width: 350px;
+  }
+  .list > ul {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 0.5rem;
+  }
+  .card {
+    border: 2px solid black;
+    align-items: center;
+    text-align: center;
+    height: 80px;
+    padding: 0.5rem;
+    cursor: pointer;
+    background: rgb(255, 215, 208);
+    border-radius: 5px;
+    grid-template-areas:
+      "a b b"
+      "a c c";
+    column-gap: 0.5rem;
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+
+  .img {
+    object-fit: cover;
+    height: 50px;
+    width: 100px;
+    grid-area: a;
+    /* max-height: 190px; */
+  }
+  .paragraph {
+    grid-area: b;
+  }
+  .publisher {
+    grid-area: c;
+  }
+  .card > * {
+    border: 2px solid black;
+  }
+  .mobil {
+    display: none;
+  }
 }

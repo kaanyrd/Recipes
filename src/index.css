@@ -50,6 +50,7 @@ p {
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px; /* Yatay kaydırma çubuğu için yükseklik belirtiyoruz */
   cursor: pointer;
 }
 ::-webkit-scrollbar-track {
@@ -73,6 +74,7 @@ p {
   /* background: green; */
   display: none;
 }
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 4rem;
