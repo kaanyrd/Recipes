@@ -17,10 +17,9 @@
   width: 90vw;
   max-width: 450px;
   height: fit-content;
-  max-height: 80vh;
 }
 .img {
-  height: 150px;
+  height: 220px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
   object-fit: cover;
