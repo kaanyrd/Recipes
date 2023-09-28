@@ -4,7 +4,6 @@ import Recipe from "../Recipe/Recipe";
 import classes from "./Recipes.module.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import ErrorModeling from "../Modeling/ErrorModeling";
-import Loading from "../Modeling/Loading";
 
 function Recipes(props) {
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
@@ -23,7 +22,6 @@ function Recipes(props) {
   };
 
   const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [recipe, setRecipe] = useState("");
   const [errorModeling, setErrorModeling] = useState([]);
   const [activeListItem, setActiveListItem] = useState(undefined);
@@ -43,7 +41,6 @@ function Recipes(props) {
     try {
       setErrorModeling([]);
       setCurrentPage(1);
-      setLoading(true);
       const response = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${recipe.trim()}&key=${key}`
       );
@@ -65,7 +62,6 @@ function Recipes(props) {
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false);
       setRecipe("");
     }
   };
@@ -128,7 +124,6 @@ function Recipes(props) {
           </button>
         </form>
       </div>
-      {/* FIXME LOADING */}
       <div className={classes.contentLayout}>
         <div className={classes.list}>
           <ul className={classes.listSelf}>
