@@ -1,8 +1,19 @@
 .content {
   min-height: 100vh;
   padding-top: 0.7rem;
-  background: rgb(255, 255, 255);
+  background: rgb(255, 228, 223);
+  transition: all 0.5s ease-out;
 }
+.contentBlack {
+  background: rgb(204, 204, 204);
+}
+.contentBlue {
+  background: rgb(188, 188, 255);
+}
+.contentGreen {
+  background: rgb(163, 255, 163);
+}
+
 .mainContent {
   height: 100%;
   display: grid;
@@ -10,22 +21,30 @@
   grid-template-rows: auto 1fr;
   padding: 0.5rem;
   width: 95vw;
-  max-width: 1370px;
+  max-width: 1470px;
   margin: 0 auto;
-}
-.mainContent > * {
-  /* border: 3px solid gray; */
 }
 .title {
   text-align: center;
   margin-bottom: 0.3rem;
   color: tomato;
+  transition: all 0.5s ease-out;
 }
+.titleBlack {
+  color: black;
+}
+.titleBlue {
+  color: blue;
+}
+.titleGreen {
+  color: green;
+}
+
 .themeBar {
   position: fixed;
   top: 50%;
   right: 0;
-  transform: translateX(-10%);
+  transform: translateX(-5%);
   z-index: 2;
   cursor: pointer;
 }

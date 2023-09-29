@@ -9,7 +9,7 @@
 }
 
 .recipeSelfContent {
-  border-radius: 15px;
+  border-radius: 20px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -18,7 +18,19 @@
   width: 90vw;
   max-width: 450px;
   height: fit-content;
+  border: 7px solid tomato;
+  transition: all 0.5s ease-out;
 }
+.recipeSelfContentBlue {
+  border: 7px solid rgb(188, 188, 255);
+}
+.recipeSelfContentGreen {
+  border: 7px solid rgb(212, 255, 212);
+}
+.recipeSelfContentBlack {
+  border: 7px solid rgb(204, 204, 204);
+}
+
 .img {
   height: 220px;
   border-top-right-radius: 15px;
@@ -47,10 +59,10 @@
 .closeBtn {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 0px;
   background: transparent;
   /* background: rgb(255, 80, 80); */
-  background-color: rgb(255, 70, 70);
+  background-color: tomato;
   color: white;
   font-weight: bold;
   border-bottom-left-radius: 10px;
@@ -78,7 +90,7 @@
   /* border-top-right-radius: 10px; */
 }
 .starIconActive {
-  color: rgb(249, 225, 10);
+  color: rgba(255, 255, 255, 0.7);
 }
 .cookingInfo {
   position: absolute;
@@ -101,11 +113,37 @@
   align-items: center;
   column-gap: 0.5rem;
 }
+.ingredient {
+  color: rgb(248, 39, 3);
+  transition: all 0.5s ease-out;
+}
+.ingredientBlue {
+  color: blue;
+}
+.ingredientBlack {
+  color: black;
+}
+.ingredientGreen {
+  color: green;
+}
+
 .aboutDish {
   /* border: 3px solid black; */
   text-align: center;
   margin-bottom: 0.5rem;
+  color: tomato;
+  transition: all 0.5s ease-out;
 }
+.aboutDishBlue {
+  color: blue;
+}
+.aboutDishBlack {
+  color: black;
+}
+.aboutDishGreen {
+  color: green;
+}
+
 .aboutDish > * {
   /* border: 1px solid red; */
   font-size: 0.9rem;
@@ -121,7 +159,19 @@
 .ingredientsTitle {
   text-align: center;
   margin: 1rem 0rem 0.2rem 0;
+  color: tomato;
+  transition: all 0.5s ease-out;
 }
+.ingredientsTitleBlack {
+  color: black;
+}
+.ingredientsTitleBlue {
+  color: blue;
+}
+.ingredientsTitleGreen {
+  color: green;
+}
+
 .list {
   /* border: 1px solid black; */
   display: flex;
@@ -129,10 +179,21 @@
   row-gap: 0.3rem;
   padding: 0.5rem;
   overflow-y: scroll;
-  height: 200px;
+  height: 250px;
   border-radius: 5px;
-  background-color: #dcdcdc;
+  background-color: rgb(255, 216, 209);
+  transition: all 0.5s ease-out;
 }
+.listBlack {
+  background-color: rgb(204, 204, 204);
+}
+.listGreen {
+  background-color: rgb(212, 255, 212);
+}
+.listBlue {
+  background-color: rgb(188, 188, 255);
+}
+
 .list > li {
   /* border: 1px solid red; */
   text-transform: capitalize;
@@ -145,13 +206,21 @@
   cursor: pointer;
 }
 .doneIcon {
-  background-color: rgb(74, 126, 74);
+  background: tomato;
+  /* background-color: rgb(74, 126, 74); */
   color: white;
+  transition: all 0.5s ease-out;
 }
-.noIcon {
-  background-color: red;
-  color: white;
+.doneIconBlack {
+  background-color: black;
 }
+.doneIconBlue {
+  background-color: blue;
+}
+.doneIconGreen {
+  background: green;
+}
+
 .loadingText {
   display: none;
 }
@@ -202,6 +271,16 @@
     background: tomato;
     padding: 0 2rem;
     border-radius: 5px;
+    transition: all 0.5s ease-out;
+  }
+  .contentBlack {
+    background-color: rgb(204, 204, 204);
+  }
+  .contentGreen {
+    background-color: rgb(212, 255, 212);
+  }
+  .contentBlue {
+    background-color: rgb(188, 188, 255);
   }
   .loading {
     display: grid;

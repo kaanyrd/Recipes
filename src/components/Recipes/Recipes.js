@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import Recipe from "../Recipe/Recipe";
 import classes from "./Recipes.module.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import ErrorModeling from "../Modeling/ErrorModeling";
+import ThemeContext from "../../context/ThemeContext";
 
 function Recipes(props) {
-  const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
+  const { theme } = useContext(ThemeContext);
 
+  const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -111,60 +113,109 @@ function Recipes(props) {
 
   return (
     <div className={classes.main}>
-      <div className={classes.formSide}>
+      <div
+        className={`${classes.formSide} ${
+          theme === "green" ? classes.formSideGreen : undefined
+        } ${theme === "black" ? classes.formSideBlack : undefined} ${
+          theme === "blue" ? classes.formSideBlue : undefined
+        }`}
+      >
         <form className={classes.form} onSubmit={searchRecipe}>
           <input
+            className={`${classes.input} ${
+              theme === "black" ? classes.inputBlack : undefined
+            } ${theme === "blue" ? classes.inputBlue : undefined} ${
+              theme === "green" ? classes.inputGreen : undefined
+            }`}
             placeholder="Over 1.000.000 recipes..."
             type="text"
             onChange={onInputChangeHandler}
             value={recipe}
           />
-          <button type="submit">
+          <button
+            className={`${classes.button} ${
+              theme === "green" ? classes.buttonGreen : undefined
+            } ${theme === "blue" ? classes.buttonBlue : undefined} ${
+              theme === "black" ? classes.buttonBlack : undefined
+            }`}
+            type="submit"
+          >
             <RestaurantIcon />
           </button>
         </form>
       </div>
-      <div className={classes.contentLayout}>
-        <div className={classes.list}>
-          <ul className={classes.listSelf}>
-            {getRecipesForCurrentPage().map((data) => (
-              <div
-                className={`${classes.card} ${
-                  activeListItem === data.id ? classes.activeCard : null
-                }`}
-                key={data.id}
-                onClick={() => handleId(data.id)}
-              >
-                <li className={classes.paragraph}>
-                  <strong>{data.title}</strong>
-                </li>
-                <img
-                  className={classes.img}
-                  src={data.image_url}
-                  alt={data.title}
-                />
-                <p className={classes.publisher}>{data.publisher}</p>
-              </div>
-            ))}
-          </ul>
-
-          <div className={classes.pagination}>
-            {Array.from(
-              { length: Math.ceil(recipes.length / itemsPerPage) },
-              (_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handlePageChange(index + 1)}
-                  className={
-                    index + 1 === currentPage ? classes.activePage : ""
-                  }
+      <div
+        className={`${classes.informationRecipe} ${
+          theme === "black" ? classes.informationRecipeBlack : undefined
+        } ${theme === "blue" ? classes.informationRecipeBlue : undefined} ${
+          theme === "green" ? classes.informationRecipeGreen : undefined
+        }`}
+      >
+        {recipes.length === 0 && <h4>Search your recipe...</h4>}
+      </div>
+      <div className={recipes.length !== 0 && classes.contentLayout}>
+        {recipes.length !== 0 && (
+          <div
+            className={`${classes.list} ${
+              theme === "green" ? classes.listGreen : undefined
+            } ${theme === "blue" ? classes.listBlue : undefined} ${
+              theme === "black" ? classes.listBlack : undefined
+            }`}
+          >
+            <ul className={classes.listSelf}>
+              {getRecipesForCurrentPage().map((data) => (
+                <div
+                  className={`${`${classes.card} ${
+                    theme === "blue" ? classes.cardBlue : undefined
+                  } ${theme === "black" ? classes.cardBlack : undefined} `} ${
+                    activeListItem === data.id ? classes.activeCard : null
+                  } ${theme === "green" ? classes.cardGreen : undefined}`}
+                  key={data.id}
+                  onClick={() => handleId(data.id)}
                 >
-                  {index + 1}
-                </button>
-              )
-            )}
+                  <li className={classes.paragraph}>
+                    <strong>{data.title}</strong>
+                  </li>
+                  <div className={classes.imgOverflow}>
+                    <img
+                      className={classes.img}
+                      src={data.image_url}
+                      alt={data.title}
+                    />
+                  </div>
+                  <p className={classes.publisher}>
+                    <strong>{data.publisher}</strong>
+                  </p>
+                </div>
+              ))}
+            </ul>
+
+            <div className={classes.pagination}>
+              {Array.from(
+                { length: Math.ceil(recipes.length / itemsPerPage) },
+                (_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handlePageChange(index + 1)}
+                    className={`${
+                      index + 1 === currentPage
+                        ? classes.activePage
+                        : classes.nonactive
+                    } ${classes.pagButton} ${
+                      theme === "blue" ? classes.pagButtonBlue : undefined
+                    } ${
+                      theme === "black" ? classes.pagButtonBlack : undefined
+                    } ${
+                      theme === "green" ? classes.pagButtonGreen : undefined
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              )}
+            </div>
           </div>
-        </div>
+        )}
         <div>
           {recipeSelf.length !== 0 &&
             ReactDOM.createPortal(
@@ -178,6 +229,19 @@ function Recipes(props) {
               recipe={recipeSelf}
               setRecipeSelf={setRecipeSelf}
             />
+          )}
+          {recipes.length !== 0 && recipeSelf.length === 0 && (
+            <div className={classes.anyFood}>
+              <h2
+                className={`${classes.clickableInfo} ${
+                  theme === "black" ? classes.clickableInfoBlack : undefined
+                } ${theme === "blue" ? classes.clickableInfoBlue : undefined} ${
+                  theme === "green" ? classes.clickableInfoGreen : undefined
+                }`}
+              >
+                Click to any recipe...
+              </h2>
+            </div>
           )}
         </div>
       </div>

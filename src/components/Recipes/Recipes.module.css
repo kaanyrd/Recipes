@@ -1,87 +1,140 @@
 .main {
   height: 100%;
-  /* border: 3px solid black; */
   border-radius: 10px;
 }
 .main > * {
-  /* border: 3px solid red; */
   padding: 0.5rem;
 }
 .formSide {
-  /* border: 3px solid black; */
   display: flex;
   align-items: center;
   justify-content: center;
   background: tomato;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  transition: all 0.5s ease-out;
+}
+.formSideGreen {
+  background: rgb(0, 149, 0);
+}
+.formSideBlack {
+  background: rgb(63, 62, 62);
+}
+.formSideBlue {
+  background: rgb(22, 23, 94);
 }
 .form {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.form > input {
+.input {
   height: 32px;
   border: none;
-  border-left: 2px solid #fa8449;
-  border-top: 2px solid #fa8449;
-  border-bottom: 2px solid #fa8449;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   padding-left: 0.5rem;
   width: 70vw;
   max-width: 350px;
+  color: tomato;
+  font-weight: bolder;
+  transition: all 0.5s ease-out;
 }
-.form > input:focus {
+.input::placeholder {
+  color: tomato;
+  transition: all 0.5s ease-out;
+}
+.inputBlue {
+  color: blue;
+}
+.inputBlue::placeholder {
+  color: blue;
+}
+.inputBlack {
+  color: black;
+}
+.inputBlack::placeholder {
+  color: black;
+}
+.inputGreen {
+  color: green;
+}
+.inputGreen::placeholder {
+  color: green;
+}
+
+.input:focus {
   outline: none;
-  border-left: 2px solid #fa8449;
-  border-top: 2px solid #fa8449;
-  border-bottom: 2px solid #fa8449;
 }
-.form > button {
+.button {
   height: 32px;
   width: 3rem;
-  border-top: 2px solid #fa8449;
-  border-bottom: 2px solid #fa8449;
-  border-right: 2px solid #fa8449;
   border-left: none;
+  border: none;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   cursor: pointer;
   color: #fe5500;
-  background: #ffbc9b;
-  transition: all 0.2s ease-out;
+  background: #ffd7c4;
+  transition: all 0.5s ease-out;
 }
-.form > button:hover {
-  background: #fca87f;
+.button:hover {
+  background: #ffbf9f;
 }
-.form > * {
-  border: 3px solid red;
+.buttonGreen {
+  color: green;
+  background-color: rgb(212, 255, 212);
 }
+.buttonBlue {
+  color: blue;
+  background-color: rgb(188, 188, 255);
+}
+.buttonBlack {
+  color: black;
+  background-color: rgb(204, 204, 204);
+}
+.buttonGreen:hover {
+  background-color: rgb(157, 255, 157);
+}
+.buttonBlue:hover {
+  background-color: rgb(157, 157, 255);
+}
+.buttonBlack:hover {
+  background-color: rgb(168, 168, 168);
+}
+
 .list {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
-  background: #ffffff;
-  outline: 5px solid tomato;
-  outline-offset: 3.5px;
+  /* outline: 5px solid tomato; */
+  /* outline-offset: 3.5px; */
+  /* border: 5px dashed tomato; */
+  /* border-radius: 10px; */
+  padding: 0.725rem;
+  transition: all 0.5s ease-out;
+  background: white;
 }
-.list > * {
-  /* border: 2px solid red; */
+
+.listGreen {
+  outline: 5px solid rgb(0, 149, 0);
 }
+.listBlack {
+  outline: 5px solid rgb(63, 62, 62);
+}
+.listBlue {
+  outline: 5px solid rgb(22, 23, 94);
+}
+
 .list > ul {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: 0.5rem;
 }
-.listSelf {
-  /* border: 2px solid black; */
-}
+
 .card {
-  /* border: 2px solid red; */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
@@ -90,13 +143,44 @@
   height: 250px;
   padding: 0.5rem;
   cursor: pointer;
-  background: rgb(255, 215, 208);
   border-radius: 5px;
-  transition: all 0.2s ease-in;
+  transition: all 0.5s ease-out;
+  background: rgb(254, 195, 183);
+}
+.img {
+  transition: all 0.5s ease-out;
+  border-radius: 5px;
+}
+.imgOverflow {
+  height: 95%;
+  overflow: hidden;
+}
+.card:hover .img {
+  transform: scale(1.2);
+}
+
+.cardBlue {
+  background: rgb(212, 212, 253);
+}
+.cardGreen {
+  background: rgb(166, 244, 171);
+}
+.cardBlack {
+  background: rgb(210, 210, 210);
 }
 .card > * {
-  /* border: 3px solid green; */
+  color: tomato;
 }
+.cardBlue > * {
+  color: blue;
+}
+.cardGreen > * {
+  color: green;
+}
+.cardBlack > * {
+  color: black;
+}
+
 .img {
   object-fit: cover;
   height: 100%;
@@ -127,17 +211,36 @@
 }
 .pagination > * {
   border: 1px solid black;
-  width: 1.4rem;
+  width: 1.5rem;
   border-radius: 5px;
   border: none;
-  background: #f8b299;
+  background: #fdc9b6;
   padding: 0.2rem;
   cursor: pointer;
   font-family: Arial, Helvetica, sans-serif;
+  transition: all 0.5s ease-out;
+}
+.pagButton {
+  background: #ffa97e;
+  font-weight: bolder;
+  color: rgb(255, 38, 0);
+}
+.pagButtonBlue {
+  background: rgb(234, 234, 251);
+  color: blue;
+}
+.pagButtonBlack {
+  background: rgb(202, 202, 202);
+  color: black;
+}
+.pagButtonGreen {
+  background: rgb(193, 205, 193);
+  color: green;
 }
 .activePage {
-  background: #fa8449;
-  font-weight: bolder;
+  opacity: 1;
+  text-decoration: underline;
+  opacity: 0.5;
 }
 
 .loadingText {
@@ -148,6 +251,20 @@
   text-align: center;
   margin-top: 1.5rem;
 }
+.informationRecipe {
+  text-align: center;
+  color: tomato;
+  transition: all 0.5s ease-out;
+}
+.informationRecipeBlack {
+  color: black;
+}
+.informationRecipeBlue {
+  color: blue;
+}
+.informationRecipeGreen {
+  color: green;
+}
 
 @media screen and (min-width: 650px) {
   .contentLayout {
@@ -155,18 +272,26 @@
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
     column-gap: 1rem;
-    border: 5px solid tomato;
-
-    /* border: 3px solid black; */
-  }
-  .contentLayout > * {
-    /* border: 2px solid red; */
+    /* border: 5px solid black; */
+    background: #f1f5f8;
   }
   .list {
     max-width: 350px;
     padding: 0.2rem;
     outline: none;
+    border: none;
+    background-color: rgb(254, 208, 200);
   }
+  .listBlue {
+    background: rgb(155, 155, 255);
+  }
+  .listGreen {
+    background: rgb(62, 119, 62);
+  }
+  .listBlack {
+    background: rgb(126, 126, 126);
+  }
+
   .list > ul {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 1fr);
@@ -174,12 +299,12 @@
   }
   .card {
     /* border: 2px solid black; */
-    align-items: center;
     text-align: start;
+    align-items: center;
     height: 80px;
     padding: 0.5rem;
     cursor: pointer;
-    background: rgb(255, 215, 208);
+    background: white;
     border-radius: 5px;
     grid-template-areas:
       "a b b"
@@ -187,14 +312,18 @@
     column-gap: 0.5rem;
     grid-template-columns: auto 1fr;
     grid-template-rows: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
-
-  .img {
+  .card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  .imgOverflow {
     object-fit: cover;
     height: 50px;
     width: 80px;
     grid-area: a;
-    border-radius: 10px;
+  }
+  .img {
     /* max-height: 190px; */
   }
   .paragraph {
@@ -203,17 +332,37 @@
   .publisher {
     grid-area: c;
   }
-  .card > * {
-    /* border: 2px solid black; */
-  }
   .mobil {
     display: none;
   }
   .card:hover {
-    background: rgb(251, 115, 92);
+    transform: translateY(-2px);
   }
   .activeCard {
-    background: rgb(251, 115, 92);
+    background: rgb(215, 214, 214);
+  }
+  .card:hover .img {
+    transform: scale(1);
+  }
+  .anyFood {
+    /* border: 3px solid black; */
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .clickableInfo {
+    color: tomato;
+    opacity: 0.35;
+    transition: all 0.5s ease-out;
+  }
+  .clickableInfoBlue {
+    color: blue;
+  }
+  .clickableInfoBlack {
+    color: black;
+  }
+  .clickableInfoGreen {
+    color: green;
   }
 }
 

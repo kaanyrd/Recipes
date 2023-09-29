@@ -62,7 +62,7 @@ p {
   background: rgba(0, 0, 0, 0.4);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(93, 92, 92);
+  background: rgb(151, 151, 151);
   /* border-radius: 5px; */
 
   border-radius: 10px;

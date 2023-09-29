@@ -2,11 +2,23 @@
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
-  border: 10px solid white;
   animation-name: loading;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  border: 10px dashed white;
+  border-top: 10px dashed black;
+}
+.loadingBlack {
+  border: 10px dashed black;
+  border-top: 10px dashed white;
+}
+.loadingBlue {
+  border: 10px dashed blue;
+  border-top: 10px dashed white;
+}
+.loadingGreen {
+  border: 10px dashed green;
   border-top: 10px dashed white;
 }
 
