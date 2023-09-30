@@ -5,10 +5,10 @@ import classes from "./Recipes.module.css";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import ErrorModeling from "../Modeling/ErrorModeling";
 import ThemeContext from "../../context/ThemeContext";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
-function Recipes(props) {
+function Recipes() {
   const { theme } = useContext(ThemeContext);
-
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
@@ -59,7 +59,6 @@ function Recipes(props) {
         ]);
         return;
       }
-      // console.log(data);
       setRecipes(data.data.recipes);
     } catch (error) {
       console.log(error);
@@ -86,7 +85,6 @@ function Recipes(props) {
     }
   };
 
-  // <p>{recipes.length === 0 ? null : <div>Recipes: {recipes.length}</div>}</p>;
   let RecipeContent = () => {
     return (
       <div className={classes.mobil}>
@@ -143,6 +141,15 @@ function Recipes(props) {
             <RestaurantIcon />
           </button>
         </form>
+        <div
+          className={`${classes.formBookmarkSide} ${
+            theme === "black" ? classes.formBookmarkSideBlack : undefined
+          } ${theme === "green" ? classes.formBookmarkSideGreen : undefined} ${
+            theme === "blue" ? classes.formBookmarkSideBlue : undefined
+          }`}
+        >
+          <BookmarkIcon />
+        </div>
       </div>
       <div
         className={`${classes.informationRecipe} ${

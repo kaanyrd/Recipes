@@ -1,9 +1,18 @@
 import React from "react";
+import classes from "./Bookmarks.module.css";
 
-function Bookmarks() {
+function Bookmarks(props) {
+  const onCloseModeling = () => {
+    props.setBookmarkModeling(false);
+  };
+
   return (
     <div>
-      <h1>Bookmarks</h1>
+      <div onClick={onCloseModeling} className={classes.background}></div>
+      <div className={classes.bookmarkContent}>
+        <h2>Bookmarks</h2>
+        <button onClick={onCloseModeling}>Close</button>
+      </div>
     </div>
   );
 }

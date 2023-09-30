@@ -108,13 +108,10 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
-  /* outline: 5px solid tomato; */
-  /* outline-offset: 3.5px; */
-  /* border: 5px dashed tomato; */
-  /* border-radius: 10px; */
   padding: 0.725rem;
   transition: all 0.5s ease-out;
   background: white;
+  outline: 5px solid tomato;
 }
 
 .listGreen {
@@ -268,6 +265,9 @@
 .anyFood {
   display: none;
 }
+.formBookmarkSide {
+  display: none;
+}
 
 @media screen and (min-width: 650px) {
   .contentLayout {
@@ -342,7 +342,7 @@
     transform: translateY(-2px);
   }
   .activeCard {
-    background: rgb(215, 214, 214);
+    background: rgb(216, 216, 216);
   }
   .card:hover .img {
     transform: scale(1);
@@ -367,6 +367,38 @@
   .clickableInfoGreen {
     color: green;
   }
+  .formBookmarkSide {
+    display: inline-block;
+  }
+  .formSide {
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: space-between;
+  }
+  .formSide > * {
+    /* border: 3px solid green; */
+  }
+  .formBookmarkSide {
+    color: tomato;
+    background: white;
+    border-radius: 50%;
+    padding: 0.2rem 0.3rem 0rem 0.3rem;
+    cursor: pointer;
+    animation-name: bookmarkIcon;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transition: all 0.5s ease-out;
+  }
+  .formBookmarkSideBlack {
+    color: black;
+  }
+  .formBookmarkSideBlue {
+    color: blue;
+  }
+  .formBookmarkSideGreen {
+    color: green;
+  }
 }
 
 @media screen and (min-width: 968px) {
@@ -376,5 +408,17 @@
     grid-template-rows: 1fr;
     column-gap: 1rem;
     border-top: none;
+  }
+}
+
+@keyframes bookmarkIcon {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }

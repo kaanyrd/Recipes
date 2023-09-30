@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./App.module.css";
 import Recipes from "./components/Recipes/Recipes";
 import ThemeBar from "./components/Theme/ThemeBar";
 import ThemeContext from "./context/ThemeContext";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import Bookmarks from "./components/Bookmarks/Bookmarks";
 // import Bookmarks from "./components/Bookmarks/Bookmarks";
 // import AddRecipe from "./components/AddRecipe/AddRecipe";
 
 function App() {
   const { theme } = useContext(ThemeContext);
+  const [bookmarkModeling, setBookmarkModeling] = useState(false);
 
   return (
     <div
@@ -29,11 +32,23 @@ function App() {
         </h3>
         <Recipes />
         <ThemeBar className={classes.themeBar} />
-        {/* <hr />
-        <Bookmarks />
+        {/*
         <hr />
         <AddRecipe /> */}
       </div>
+      <div
+        onClick={setBookmarkModeling}
+        className={`${classes.bookmark} ${
+          theme === "black" ? classes.bookmarkBlack : undefined
+        } ${theme === "blue" ? classes.bookmarkBlue : undefined} ${
+          theme === "green" ? classes.bookmarkGreen : undefined
+        }`}
+      >
+        <BookmarkIcon />
+      </div>
+      {bookmarkModeling && (
+        <Bookmarks setBookmarkModeling={setBookmarkModeling} />
+      )}
     </div>
   );
 }

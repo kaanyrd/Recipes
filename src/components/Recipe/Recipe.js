@@ -10,9 +10,12 @@ import Loading from "../Modeling/Loading";
 import ThemeContext from "../../context/ThemeContext";
 
 function Recipe(props) {
+  const initialBookmarks = localStorage.getItem("bookmarks");
+  const Bookmark = JSON.parse(initialBookmarks);
   const { theme } = useContext(ThemeContext);
   const [ingredients, setIngredients] = useState([]);
   const [star, setStar] = useState(false);
+  const [bookmarks, setBookmarks] = useState(Bookmark || []);
 
   useEffect(() => {
     setIngredients([]);
@@ -26,9 +29,14 @@ function Recipe(props) {
     props.setActiveListItem([]);
   };
 
-  const onStarHandler = () => {
+  const onStarHandler = (data) => {
     setStar((prevState) => !prevState);
+    setBookmarks((prevState) => [...prevState, { id: data }]);
   };
+
+  useEffect(() => {
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   return (
     <div
@@ -43,7 +51,6 @@ function Recipe(props) {
           <Loading />
         </div>
       )}
-
       {!props.loading && props.recipe && (
         <div className={classes.recipeSelf}>
           <div onClick={onCloseHandler} className={classes.background}></div>
@@ -78,7 +85,7 @@ function Recipe(props) {
                     </p>
                   </div>
                   <div
-                    onClick={onStarHandler}
+                    onClick={() => onStarHandler(props.recipe.id)}
                     className={`${classes.starIcon} ${
                       star && classes.starIconActive
                     }`}
