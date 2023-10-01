@@ -32,6 +32,7 @@
   transform: translateX(-5%);
   z-index: 1;
   cursor: pointer;
+  transition: all 0.5s ease-out;
 }
 .bookmark {
   display: inline-block;
