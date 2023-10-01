@@ -16,6 +16,7 @@ function Bookmarks(props) {
 
   const onDeleteHandler = (data) => {
     setBooks(books.filter((item) => item.id !== data));
+    localStorage.setItem("bookmarks", JSON.stringify(books));
   };
 
   useEffect(() => {

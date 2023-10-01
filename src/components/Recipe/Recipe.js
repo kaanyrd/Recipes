@@ -30,11 +30,15 @@ function Recipe(props) {
   };
 
   const onStarHandler = (data) => {
-    const control = bookmarks.filter((bookmark) => bookmark.id === data.id);
-    setStar((prevState) => !prevState);
-
-    if (control.length !== 0) return;
-    setBookmarks((prevState) => [...prevState, data]);
+    const control = bookmarks.find((bookmark) => bookmark.id === data.id);
+    if (control) {
+      const updatedBookmarks = bookmarks.filter(
+        (bookmark) => bookmark.id !== data.id
+      );
+      setBookmarks(updatedBookmarks);
+    } else {
+      setBookmarks((prevState) => [...prevState, data]);
+    }
   };
   useEffect(() => {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));

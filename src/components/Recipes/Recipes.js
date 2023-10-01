@@ -158,6 +158,17 @@ function Recipes(props) {
           <BookmarkIcon />
         </div>
       </div>
+      {recipes.length === 0 && (
+        <h3
+          className={`${classes.entryInfo} ${
+            theme === "black" ? classes.entryInfoBlack : undefined
+          } ${theme === "green" ? classes.entryInfoGreen : undefined} ${
+            theme === "blue" ? classes.entryInfoBlue : undefined
+          }`}
+        >
+          <em>Search your menu for today...</em>
+        </h3>
+      )}
       <div className={recipes.length !== 0 && classes.contentLayout}>
         {recipes.length !== 0 && (
           <div

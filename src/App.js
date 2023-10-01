@@ -6,7 +6,6 @@ import ThemeContext from "./context/ThemeContext";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Bookmarks from "./components/Bookmarks/Bookmarks";
 import ReactDOM from "react-dom";
-// import AddRecipe from "./components/AddRecipe/AddRecipe";
 
 function App() {
   const { theme } = useContext(ThemeContext);
@@ -30,9 +29,6 @@ function App() {
           setBookmarkModeling={setBookmarkModeling}
         />
         <ThemeBar className={classes.themeBar} />
-        {/*
-        <hr />
-        <AddRecipe /> */}
       </div>
       <div
         onClick={setBookmarkModeling}
