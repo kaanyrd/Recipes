@@ -1,6 +1,6 @@
 .content {
   min-height: 100vh;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   background: rgb(255, 228, 223);
   transition: all 0.5s ease-out;
 }
@@ -24,36 +24,21 @@
   max-width: 1470px;
   margin: 0 auto;
 }
-.title {
-  text-align: center;
-  margin-bottom: 0.3rem;
-  color: tomato;
-  transition: all 0.5s ease-out;
-}
-.titleBlack {
-  color: black;
-}
-.titleBlue {
-  color: blue;
-}
-.titleGreen {
-  color: green;
-}
 
 .themeBar {
   position: fixed;
   top: 50%;
   right: 0;
   transform: translateX(-5%);
-  z-index: 2;
+  z-index: 1;
   cursor: pointer;
 }
 .bookmark {
   display: inline-block;
   position: fixed;
   z-index: 1;
-  bottom: 15%;
-  left: 10%;
+  bottom: 10%;
+  left: 7%;
   border-radius: 50%;
   background: white;
   padding: 0.2rem 0.45rem 0.1rem 0.45rem;
@@ -62,6 +47,17 @@
   cursor: pointer;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
   transition: all 0.5s ease-out;
+}
+.count {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 50%;
+  padding: 0 0.3rem;
+  color: tomato;
+  border: 3px solid tomato;
 }
 .bookmarkBlack {
   color: black;

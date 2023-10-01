@@ -2,16 +2,24 @@
   height: 100%;
   border-radius: 10px;
 }
+
+.informationRecipe {
+}
 .main > * {
   padding: 0.5rem;
 }
 .formSide {
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  row-gap: 0.5rem;
+  text-align: center;
   align-items: center;
   justify-content: center;
   background: tomato;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  /* border-top-right-radius: 10px;
+  border-top-left-radius: 10px; */
   transition: all 0.5s ease-out;
 }
 .formSideGreen {
@@ -248,20 +256,7 @@
   text-align: center;
   margin-top: 1.5rem;
 }
-.informationRecipe {
-  text-align: center;
-  color: tomato;
-  transition: all 0.5s ease-out;
-}
-.informationRecipeBlack {
-  color: black;
-}
-.informationRecipeBlue {
-  color: blue;
-}
-.informationRecipeGreen {
-  color: green;
-}
+
 .anyFood {
   display: none;
 }
@@ -383,6 +378,7 @@
     background: white;
     border-radius: 50%;
     padding: 0.2rem 0.3rem 0rem 0.3rem;
+    margin-left: 0.3rem;
     cursor: pointer;
     animation-name: bookmarkIcon;
     animation-duration: 2s;

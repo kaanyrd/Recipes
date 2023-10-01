@@ -30,10 +30,13 @@ function Recipe(props) {
   };
 
   const onStarHandler = (data) => {
+    const control = Bookmark.filter((bookmark) => bookmark.id === data.id);
+    // FIXME
+    // recipe bookmarkı buraya göre güncelle
     setStar((prevState) => !prevState);
-    setBookmarks((prevState) => [...prevState, { id: data }]);
+    if (control.length !== 0) return;
+    setBookmarks((prevState) => [...prevState, data]);
   };
-
   useEffect(() => {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }, [bookmarks]);
@@ -85,7 +88,7 @@ function Recipe(props) {
                     </p>
                   </div>
                   <div
-                    onClick={() => onStarHandler(props.recipe.id)}
+                    onClick={() => onStarHandler(props.recipe)}
                     className={`${classes.starIcon} ${
                       star && classes.starIconActive
                     }`}

@@ -6,8 +6,9 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 import ErrorModeling from "../Modeling/ErrorModeling";
 import ThemeContext from "../../context/ThemeContext";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import { Bookmarks } from "@mui/icons-material";
 
-function Recipes() {
+function Recipes(props) {
   const { theme } = useContext(ThemeContext);
   const key = "c7f4236f-e4eb-494d-b195-a22e58455ebd";
   const [currentPage, setCurrentPage] = useState(1);
@@ -109,6 +110,10 @@ function Recipes() {
     );
   };
 
+  const onBookmarkOpen = () => {
+    props.setBookmarkModeling(true);
+  };
+
   return (
     <div className={classes.main}>
       <div
@@ -118,6 +123,7 @@ function Recipes() {
           theme === "blue" ? classes.formSideBlue : undefined
         }`}
       >
+        <h3 style={{ color: "white" }}>Search Your Recipe</h3>
         <form className={classes.form} onSubmit={searchRecipe}>
           <input
             className={`${classes.input} ${
@@ -142,6 +148,7 @@ function Recipes() {
           </button>
         </form>
         <div
+          onClick={onBookmarkOpen}
           className={`${classes.formBookmarkSide} ${
             theme === "black" ? classes.formBookmarkSideBlack : undefined
           } ${theme === "green" ? classes.formBookmarkSideGreen : undefined} ${
@@ -150,15 +157,6 @@ function Recipes() {
         >
           <BookmarkIcon />
         </div>
-      </div>
-      <div
-        className={`${classes.informationRecipe} ${
-          theme === "black" ? classes.informationRecipeBlack : undefined
-        } ${theme === "blue" ? classes.informationRecipeBlue : undefined} ${
-          theme === "green" ? classes.informationRecipeGreen : undefined
-        }`}
-      >
-        {recipes.length === 0 && <h4>Search your recipe...</h4>}
       </div>
       <div className={recipes.length !== 0 && classes.contentLayout}>
         {recipes.length !== 0 && (
@@ -256,6 +254,11 @@ function Recipes() {
         ReactDOM.createPortal(
           <ErrorContent />,
           document.getElementById("errorModeling")
+        )}
+      {props.bookmarkModeling &&
+        ReactDOM.createPortal(
+          <Bookmarks />,
+          document.getElementById("bookmarkModeling")
         )}
     </div>
   );

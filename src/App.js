@@ -5,12 +5,16 @@ import ThemeBar from "./components/Theme/ThemeBar";
 import ThemeContext from "./context/ThemeContext";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import Bookmarks from "./components/Bookmarks/Bookmarks";
-// import Bookmarks from "./components/Bookmarks/Bookmarks";
+import ReactDOM from "react-dom";
 // import AddRecipe from "./components/AddRecipe/AddRecipe";
 
 function App() {
   const { theme } = useContext(ThemeContext);
   const [bookmarkModeling, setBookmarkModeling] = useState(false);
+
+  let BookmarkModel = () => {
+    return <Bookmarks setBookmarkModeling={setBookmarkModeling}></Bookmarks>;
+  };
 
   return (
     <div
@@ -21,16 +25,10 @@ function App() {
       }`}
     >
       <div className={classes.mainContent}>
-        <h3
-          className={`${classes.title} ${
-            theme === "black" ? classes.titleBlack : undefined
-          } ${theme === "green" ? classes.titleGreen : undefined} ${
-            theme === "blue" ? classes.titleBlue : undefined
-          }`}
-        >
-          Search Your Dishes
-        </h3>
-        <Recipes />
+        <Recipes
+          bookmarkModeling={bookmarkModeling}
+          setBookmarkModeling={setBookmarkModeling}
+        />
         <ThemeBar className={classes.themeBar} />
         {/*
         <hr />
@@ -44,11 +42,13 @@ function App() {
           theme === "green" ? classes.bookmarkGreen : undefined
         }`}
       >
-        <BookmarkIcon />
+        <BookmarkIcon fontSize="large" />
       </div>
-      {bookmarkModeling && (
-        <Bookmarks setBookmarkModeling={setBookmarkModeling} />
-      )}
+      {bookmarkModeling &&
+        ReactDOM.createPortal(
+          <BookmarkModel />,
+          document.getElementById("bookmarkModeling")
+        )}
     </div>
   );
 }
