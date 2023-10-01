@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import classes from "./Bookmarks.module.css";
 import CloseIcon from "@mui/icons-material/Close";
 import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
@@ -8,10 +8,19 @@ function Bookmarks(props) {
   const { theme } = useContext(ThemeContext);
   const localStorageData = localStorage.getItem("bookmarks");
   const data = JSON.parse(localStorageData);
+  const [books, setBooks] = useState(data);
 
   const onCloseModeling = () => {
     props.setBookmarkModeling(false);
   };
+
+  const onDeleteHandler = (data) => {
+    setBooks(books.filter((item) => item.id !== data));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("bookmarks", JSON.stringify(books));
+  }, [books]);
 
   return (
     <div>
@@ -35,8 +44,29 @@ function Bookmarks(props) {
         <button className={classes.closeBtn} onClick={onCloseModeling}>
           <CloseIcon />
         </button>
-        <ul className={classes.bookMarksList}>
-          {data?.map((data, index) => (
+
+        <ul
+          className={`${classes.bookMarksList} ${
+            theme === "black" ? classes.bookMarksListBlack : undefined
+          } ${theme === "blue" ? classes.bookMarksListBlue : undefined} ${
+            theme === "green" ? classes.bookMarksListGreen : undefined
+          }`}
+        >
+          {(books === null && (
+            <h5 className={classes.info}>There aren't any bookmkars</h5>
+          )) ||
+            (books.length === 0 && (
+              <h5
+                className={`${classes.info} ${
+                  theme === "black" ? classes.infoBlack : undefined
+                } ${theme === "blue" ? classes.infoBlue : undefined} ${
+                  theme === "green" ? classes.infoGreen : undefined
+                }`}
+              >
+                There aren't any bookmkars
+              </h5>
+            ))}
+          {books?.map((data, index) => (
             <div className={classes.bookmarkItem} key={index}>
               <div className={classes.imgSide}>
                 <img
@@ -61,10 +91,10 @@ function Bookmarks(props) {
                       : undefined
                   }`}
                 >
-                  <h4 className={classes.bookMarkRightTop}>
-                    {index + 1}- {data.title} / ({data.publisher})
-                  </h4>
-                  <p>
+                  <h5 className={classes.bookMarkRightTop}>
+                    {index + 1}- {data.title}
+                  </h5>
+                  <small>
                     ✔ {data.servings} serving - {data.cooking_time} mins -{" "}
                     <a
                       className={`${classes.link} ${
@@ -75,12 +105,27 @@ function Bookmarks(props) {
                       href={data.source_url}
                       target="blank"
                     >
-                      For cooking Link
+                      Cooking Link
                     </a>
-                  </p>
+                  </small>
                 </div>
-                <div className={classes.removeBookmarkIcon}>
-                  <BookmarkRemoveIcon />
+                <div>
+                  <BookmarkRemoveIcon
+                    onClick={() => onDeleteHandler(data.id)}
+                    className={`${classes.removeBookmarkIcon} ${
+                      theme === "black"
+                        ? classes.removeBookmarkIconBlack
+                        : undefined
+                    } ${
+                      theme === "blue"
+                        ? classes.removeBookmarkIconBlue
+                        : undefined
+                    } ${
+                      theme === "green"
+                        ? classes.removeBookmarkIconGreen
+                        : undefined
+                    }`}
+                  />
                 </div>
               </div>
             </div>

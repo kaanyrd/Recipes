@@ -123,7 +123,7 @@ function Recipes(props) {
           theme === "blue" ? classes.formSideBlue : undefined
         }`}
       >
-        <h3 style={{ color: "white" }}>Search Your Recipe</h3>
+        <h3 style={{ color: "white" }}>Your Recipe</h3>
         <form className={classes.form} onSubmit={searchRecipe}>
           <input
             className={`${classes.input} ${

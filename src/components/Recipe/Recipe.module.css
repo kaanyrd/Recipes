@@ -95,7 +95,8 @@
   border-top-right-radius: 10px;
 }
 .starIconActive {
-  color: rgba(255, 255, 255, 0.7);
+  color: gold;
+  opacity: 0.9;
 }
 .cookingInfo {
   position: absolute;

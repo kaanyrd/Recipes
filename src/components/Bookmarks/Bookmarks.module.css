@@ -16,13 +16,15 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 90vw;
+  width: 95vw;
   max-width: 750px;
-  height: 70vh;
+  height: fit-content;
+  max-height: 70vh;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   padding: 1rem;
   transition: all 0.5s ease-out;
+  border: 5px solid tomato;
 }
 .bookmarkContentBlack {
   border: 5px solid black;
@@ -39,24 +41,37 @@
   margin-bottom: 0.5rem;
 }
 .bookMarksList {
-  height: calc(100% - 2rem);
+  height: 80%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
-  border: 3px solid gray;
+  border: 3px solid tomato;
   border-radius: 5px;
   padding: 0.5rem;
+  transition: all 0.5s ease-out;
+  background: #dedede;
 }
+.bookMarksListBlue {
+  border: 3px solid blue;
+}
+.bookMarksListBlack {
+  border: 3px solid black;
+}
+.bookMarksListGreen {
+  border: 3px solid green;
+}
+
 .closeBtn {
   color: white;
   background: tomato;
   border: none;
   display: inline-block;
   position: absolute;
-  top: -0px;
-  right: -0px;
-  border-top-right-radius: 5px;
+  top: 5px;
+  right: 5px;
+  border-radius: 5px;
+  padding: 0.1rem 0 0 0;
 }
 
 .imgSide {
@@ -78,7 +93,7 @@
   -moz-column-gap: 1rem;
   column-gap: 1rem;
   padding: 0.5rem 0.3rem;
-  background: #e6e6e7;
+  background: #fff;
 }
 .bookMarkRightSide {
   display: grid;
@@ -118,4 +133,29 @@ a {
 
 .removeBookmarkIcon {
   cursor: pointer;
+  color: tomato;
+  transition: all 0.5s ease-out;
+}
+.removeBookmarkIconBlack {
+  color: black;
+}
+.removeBookmarkIconBlue {
+  color: blue;
+}
+.removeBookmarkIconGreen {
+  color: green;
+}
+
+.info {
+  text-align: center;
+  color: tomato;
+}
+.infoBlack {
+  color: black;
+}
+.infoBlue {
+  color: blue;
+}
+.infoGreen {
+  color: green;
 }

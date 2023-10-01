@@ -30,16 +30,24 @@ function Recipe(props) {
   };
 
   const onStarHandler = (data) => {
-    const control = Bookmark.filter((bookmark) => bookmark.id === data.id);
-    // FIXME
-    // recipe bookmarkı buraya göre güncelle
+    const control = bookmarks.filter((bookmark) => bookmark.id === data.id);
     setStar((prevState) => !prevState);
+
     if (control.length !== 0) return;
     setBookmarks((prevState) => [...prevState, data]);
   };
   useEffect(() => {
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
   }, [bookmarks]);
+
+  useEffect(() => {
+    const control = bookmarks.filter((item) => item.id === props.recipe.id);
+    if (control) {
+      setStar(true);
+    } else {
+      setStar(false);
+    }
+  }, [bookmarks, props.recipe.id]);
 
   return (
     <div
