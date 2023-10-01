@@ -41,13 +41,15 @@ function Recipe(props) {
   }, [bookmarks]);
 
   useEffect(() => {
-    const control = bookmarks.filter((item) => item.id === props.recipe.id);
+    const control = bookmarks.find(
+      (bookmark) => bookmark.id === props.recipe.id
+    );
     if (control) {
       setStar(true);
     } else {
       setStar(false);
     }
-  }, [bookmarks, props.recipe.id]);
+  }, [props.recipe.id, bookmarks]);
 
   return (
     <div
