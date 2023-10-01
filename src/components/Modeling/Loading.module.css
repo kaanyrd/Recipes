@@ -2,9 +2,13 @@
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
+  -webkit-animation-name: loading;
   animation-name: loading;
+  -webkit-animation-duration: 1s;
   animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   border: 10px dashed white;
   border-top: 10px dashed black;
@@ -20,6 +24,15 @@
 .loadingGreen {
   border: 10px dashed green;
   border-top: 10px dashed white;
+}
+
+@-webkit-keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes loading {
