@@ -19,6 +19,8 @@
   left: 50%;
   width: 97vw;
   max-width: 750px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   max-height: 75vh;
   transform: translate(-50%, -50%);
