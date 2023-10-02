@@ -22,7 +22,7 @@
   /* height: -webkit-fit-content; */
   /* height: -moz-fit-content; */
   /* height: fit-content; */
-  height: 90vh;
+  height: 80vh;
   border: 5px solid tomato;
   transition: all 0.5s ease-out;
   display: grid;
@@ -173,7 +173,7 @@
   /* border: 5px solid green; */
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: calc(90vh - 160px);
+  height: calc(80vh - 160px);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
