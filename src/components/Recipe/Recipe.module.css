@@ -170,7 +170,6 @@
 }
 .cardBottom {
   /* padding: 0.5rem; */
-  background: white;
   /* border: 5px solid green; */
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
@@ -211,6 +210,7 @@
   /* height: 250px; */
   border-radius: 5px;
   background-color: rgb(255, 216, 209);
+  height: 100%;
   transition: all 0.5s ease-out;
   /* height: calc(); */
 }

@@ -166,7 +166,7 @@ function Recipes(props) {
             theme === "blue" ? classes.entryInfoBlue : undefined
           }`}
         >
-          <em>Search your menu for today...</em>
+          <em>What's on the menu for today?</em>
         </h3>
       )}
       <div className={recipes.length !== 0 && classes.contentLayout}>
