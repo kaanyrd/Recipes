@@ -1,27 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import classes from "./Bookmarks.module.css";
 import CloseIcon from "@mui/icons-material/Close";
 import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
 import ThemeContext from "../../context/ThemeContext";
+import BooksContext from "../../context/BooksContext";
 
 function Bookmarks(props) {
   const { theme } = useContext(ThemeContext);
-  const localStorageData = localStorage.getItem("bookmarks");
-  const data = JSON.parse(localStorageData);
-  const [books, setBooks] = useState(data);
+  const { bookmarks, setBookmarks } = useContext(BooksContext);
 
   const onCloseModeling = () => {
     props.setBookmarkModeling(false);
   };
 
-  const onDeleteHandler = (data) => {
-    setBooks(books.filter((item) => item.id !== data));
-    localStorage.setItem("bookmarks", JSON.stringify(books));
+  const onDeleteHandler = (comingId) => {
+    setBookmarks(bookmarks.filter((item) => item.id !== comingId));
   };
 
   useEffect(() => {
-    localStorage.setItem("bookmarks", JSON.stringify(books));
-  }, [books]);
+    localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  }, [bookmarks]);
 
   return (
     <div>
@@ -53,11 +51,11 @@ function Bookmarks(props) {
             theme === "green" ? classes.bookMarksListGreen : undefined
           }`}
         >
-          {(books === null && (
-            <h5 className={classes.info}>There aren't any bookmkars</h5>
+          {(bookmarks === null && (
+            <h4 className={classes.info}>There are no bookmarks...</h4>
           )) ||
-            (books.length === 0 && (
-              <h5
+            (bookmarks.length === 0 && (
+              <h4
                 className={`${classes.info} ${
                   theme === "black" ? classes.infoBlack : undefined
                 } ${theme === "blue" ? classes.infoBlue : undefined} ${
@@ -65,9 +63,9 @@ function Bookmarks(props) {
                 }`}
               >
                 There aren't any bookmkars
-              </h5>
+              </h4>
             ))}
-          {books?.map((data, index) => (
+          {bookmarks?.map((data, index) => (
             <div className={classes.bookmarkItem} key={index}>
               <div className={classes.imgSide}>
                 <img
@@ -110,9 +108,8 @@ function Bookmarks(props) {
                     </a>
                   </small>
                 </div>
-                <div>
+                <div onClick={() => onDeleteHandler(data.id)}>
                   <BookmarkRemoveIcon
-                    onClick={() => onDeleteHandler(data.id)}
                     className={`${classes.removeBookmarkIcon} ${
                       theme === "black"
                         ? classes.removeBookmarkIconBlack
