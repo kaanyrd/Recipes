@@ -22,7 +22,7 @@
   /* height: -webkit-fit-content; */
   /* height: -moz-fit-content; */
   /* height: fit-content; */
-  height: 85vh;
+  height: 90vh;
   border: 5px solid tomato;
   transition: all 0.5s ease-out;
   display: grid;
@@ -54,7 +54,7 @@
   padding: 0;
   border-radius: 10px;
   background: white;
-  height: 170px;
+  height: 160px;
 }
 .more {
   position: absolute;
@@ -173,7 +173,7 @@
   /* border: 5px solid green; */
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  height: calc(85vh - 190px);
+  height: calc(90vh - 175px);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
