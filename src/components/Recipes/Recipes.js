@@ -21,6 +21,7 @@ function Recipes(props) {
   };
 
   const handlePageChange = (newPage) => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     setCurrentPage(newPage);
   };
 
